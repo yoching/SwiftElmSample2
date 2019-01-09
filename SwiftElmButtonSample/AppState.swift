@@ -46,6 +46,11 @@ struct AppState {
                 name: UIApplication.didBecomeActiveNotification,
                 { notification -> Message in
                     return .load
+            }),
+            .notification(
+                name: UIApplication.willResignActiveNotification,
+                { notification -> Message in
+                    return .save
             })
         ]
     }
@@ -62,7 +67,7 @@ struct AppState {
                     .button(text: "load", onTap: .load)
                 ],
                 axis: .vertical,
-                distriburtion: .fillEqually
+                distribution: .fillEqually
             )
         )
     }

@@ -23,9 +23,9 @@ indirect enum View<Message> {
     static func stackView(
         views: [View<Message>],
         axis: NSLayoutConstraint.Axis,
-        distriburtion: UIStackView.Distribution
+        distribution: UIStackView.Distribution
         ) -> View {
-        return ._stackView(StackView(views: views, axis: axis, distriburtion: distriburtion))
+        return ._stackView(StackView(views: views, axis: axis, distriburtion: distribution))
     }
 }
 
