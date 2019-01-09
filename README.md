@@ -1,4 +1,4 @@
-# Elm Sample implemented with Swift v2
+# The Elm Architecture sample v2 implemented with Swift
 
 This includes `Command` and `Subscription` which are excluded for simplicity in [v1](https://github.com/yoching/SwiftElmButtonSample).
 
