@@ -1,13 +1,25 @@
-# Elm Button Sample implemented with Swift
+# Elm Sample implemented with Swift v2
 
-This is a swift implementation of [Buttons sample](https://guide.elm-lang.org/architecture/buttons.html) in Elm Official Guide.  
-For simplicity, [commands and subscriptions](https://guide.elm-lang.org/effects/) are not included.  
-Also, incremental updates of views are not implemented.  
-(If you want to know them, please refer to [referenced materials](#References).)  
+This is the 2nd sample of The Elm Architecture implemented with swift.
 
-I hope this will be a help to start learning The Elm Architecture with swift!
+This includes `Command` and `Subscription` which are excluded for the simplicity in [v1](https://github.com/yoching/SwiftElmButtonSample).
 
-![](./ButtonsSample.gif)
+
+
+## Differences from [v1](https://github.com/yoching/SwiftElmButtonSample)
+
+- elements
+  - add `Command`
+  - add `Subscription`
+- behavior
+  - save current value into UserDefaults using `Command`
+  - load stored value in UserDefaults
+  - save & load are also done when the app enters background and foreground respectively
+
+`Command` is a way to declare side-effects (networking, storage, ...), and `Subscription` is a way to subscribe outer changes.
+Please read [here](https://guide.elm-lang.org/effects/) for the details.
+
+![](ButtonsSample2.gif)
 
 ## AppState
 ```swift
@@ -50,6 +62,11 @@ struct AppState {
                 name: UIApplication.didBecomeActiveNotification,
                 { notification -> Message in
                     return .load
+            }),
+            .notification(
+                name: UIApplication.willResignActiveNotification,
+                { notification -> Message in
+                    return .save
             })
         ]
     }
@@ -66,7 +83,7 @@ struct AppState {
                     .button(text: "load", onTap: .load)
                 ],
                 axis: .vertical,
-                distriburtion: .fillEqually
+                distribution: .fillEqually
             )
         )
     }
@@ -75,6 +92,7 @@ struct AppState {
 
 
 ## References
+- [1st version](https://github.com/yoching/SwiftElmButtonSample)
 - App Architecture from objc.io
   - [book & video](https://www.objc.io/books/app-architecture/)
   - [sample codes](https://github.com/objcio/app-architecture)
