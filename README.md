@@ -12,9 +12,9 @@ This includes `Command` and `Subscription` which are excluded for simplicity in 
 - behavior
   - save current value into UserDefaults using `Command`
   - load stored value in UserDefaults
-  - save & load are also done when the app enters background and foreground respectively
+  - save & load are also done when the app enters background and foreground respectively using `Subscription`
 
-`Command` is a way to declare side-effects (networking, storage, ...), and `Subscription` is a way to subscribe outer changes.
+`Command` is a way to declare side-effects (networking, storage, ...), and `Subscription` is a way to subscribe outer changes (like notifications).  
 Please read [here](https://guide.elm-lang.org/effects/) for the details.
 
 ![](ButtonsSample2.gif)
